@@ -1,0 +1,350 @@
+/* frontend/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* design tokens */
+:root {
+  --brand: #06b6d4;
+  --brand-600: #0891b2;
+  --brand-dark: #155e75;
+  --accent: #8b5cf6;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --muted: #64748b;
+  --card-bg: #ffffff;
+  --bg-body: #f8fafc;
+  --text-main: #0f172a;
+  --border-color: rgba(226, 232, 240, 0.8);
+  --toast-bg: #ffffff;
+  --toast-color: #0f172a;
+}
+
+.dark {
+  --brand: #22d3ee;
+  --brand-600: #06b6d4;
+  --brand-dark: #0891b2;
+  --accent: #a78bfa;
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --muted: #94a3b8;
+  --card-bg: #1e293b;
+  --bg-body: #0f172a;
+  --text-main: #f1f5f9;
+  --border-color: rgba(51, 65, 85, 0.5);
+  --toast-bg: #1e293b;
+  --toast-color: #f1f5f9;
+}
+
+/* page */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply antialiased transition-colors duration-300;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+}
+
+/* Smooth transitions for better UX */
+button {
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* card */
+.app-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.app-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+}
+
+.dark .app-card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.dark .app-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* auth - Dark Modern Design */
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-wrap::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  top: -250px;
+  right: -250px;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.auth-wrap::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  animation: pulse 3s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.brand-strip {
+  background: linear-gradient(135deg, #000000 0%, #1f1f1f 100%);
+  color: white;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  background: #000000;
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* inputs */
+.input {
+  @apply w-full border border-slate-700 rounded-xl px-4 py-3 bg-slate-900 text-white focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Standard Primary Button (Cyan Gradient) - RESTORED for Add Transaction */
+.btn-primary {
+  @apply w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-white font-semibold shadow-lg shadow-cyan-500/30;
+  background: linear-gradient(135deg, var(--brand), var(--brand-600));
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Beautiful Animated Login Button from Uiverse.io */
+.btn-login,
+.btn-login *,
+.btn-login :after,
+.btn-login :before,
+.btn-login:after,
+.btn-login:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-login {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+  border-radius: 99rem;
+  border-width: 2px;
+  border-color: #ffffff;
+  overflow: hidden;
+  padding: 0.8rem 3rem;
+  position: relative;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-login:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.btn-login:-moz-focusring {
+  outline: auto;
+}
+
+.btn-login svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-login [hidden] {
+  display: none;
+}
+
+.btn-login span {
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-login:after,
+.btn-login:before {
+  background: linear-gradient(90deg,
+      #fff 25%,
+      transparent 0,
+      transparent 50%,
+      #fff 0,
+      #fff 75%,
+      transparent 0);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translateY(var(--progress, 100%));
+  transition: transform 0.2s ease;
+}
+
+.btn-login:after {
+  --progress: -100%;
+  background: linear-gradient(90deg,
+      transparent 0,
+      transparent 25%,
+      #fff 0,
+      #fff 50%,
+      transparent 0,
+      transparent 75%,
+      #fff 0);
+  z-index: -1;
+}
+
+.btn-login:hover:after,
+.btn-login:hover:before {
+  --progress: 0;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium transition-colors;
+}
+
+/* small helpers */
+.small-muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* z-index fixes */
+.auth-wrap,
+.auth-card,
+.app-card {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto !important;
+}
+
+input,
+textarea,
+select,
+button {
+  pointer-events: auto !important;
+  touch-action: manipulation;
+}
+
+.auth-card {
+  z-index: 999;
+}
