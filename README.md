@@ -107,12 +107,4 @@ kubeo/
 
 ---
 
-## 🌟 Why Kubeo Wins?
 
-1.  **It's Alive**: Unlike static dashboards, Kubeo reacts to you. Numbers count up, buttons pulse, and success is celebrated.
-2.  **It's Smart**: It doesn't just store data; it tells you what the data *means* for your future.
-3.  **It's Fast**: Built on Vite for instant loading and snappy interactions.
-
----
-
-Made with ❤️ by **[Your Name]** for the **[Hackathon Name/Competition]**.
